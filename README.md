@@ -1,4 +1,17 @@
+## Hi, I'm Drushti 👋
+
 **Drushti Vagal | Data Analyst & Data Science Enthusiast**
+CE 2026 · Terna Engineering College, Nerul
+
+🔬 Building SENTINAL — AI harassment detection
+   using DeepFace, CNN, and FastAPI
+📊 Interests: Computer Vision, Data Science, ML
+🌐 Portfolio: drushtivagal.github.io
+📍 Dombivali, Mumbai | Open to work
+
+**Skills**
+`Python` `FastAPI` `DeepFace` `TensorFlow` `SQL`
+`Power BI` `React` `Node.js` `Scikit-learn` `Computer Vision`
 
 I am a Computer Science undergraduate specializing in data analytics and data science, with hands-on experience in transforming raw data into actionable insights. My expertise spans Python, SQL, Power BI, and data visualization, enabling me to design end-to-end analytical solutions that drive informed decision-making.
 
