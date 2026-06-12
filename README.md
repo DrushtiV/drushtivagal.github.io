@@ -1,10 +1,10 @@
 # Hi, I'm Drushti Vagal 👋
 
 <p align="left">
-  <a href="https://linkedin.com/in/YOUR_LINKEDIN_USERNAME" target="_blank">
+  <a href="www.linkedin.com/in/drushti-v" target="_blank">
     <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn Badge"/>
   </a>
-  <a href="mailto:your.email@example.com">
+  <a href="drushtivagal22@gmail.com">
     <img src="https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Email Badge"/>
   </a>
   <img src="https://img.shields.io/badge/Location-Mumbai,%20India-FF4B4B?style=for-the-badge" alt="Location Badge"/>
