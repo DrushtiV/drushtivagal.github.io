@@ -3,16 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Portfolio — Your Name</title>
+<meta name="description" content="Portfolio of Drushti Vagal - Data Science & AI/ML Engineer">
+<title>Portfolio — Drushti Vagal</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" 
+  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <style>
   :root {
     --bg: #060608;
     --bg2: #0c0c12;
     --surface: #11111a;
-    --surface2: #17172280;
+    --surface2: rgba(23, 23, 34, 0.5);
     --accent: #7b5ea7;
     --accent2: #a78bda;
     --accent3: #e0c3ff;
@@ -22,10 +25,10 @@
     --text: #eeeef5;
     --text2: #9898b0;
     --text3: #5a5a72;
-    --border: #ffffff0d;
-    --border2: #ffffff18;
-    --glow: #7b5ea740;
-    --glow2: #4fc3f720;
+    --border: rgba(255, 255, 255, 0.05);
+    --border2: rgba(255, 255, 255, 0.1);
+    --glow: rgba(123, 94, 167, 0.25);
+    --glow2: rgba(79, 195, 247, 0.12);
     --radius: 16px;
     --radius2: 24px;
     --ease: cubic-bezier(0.23, 1, 0.32, 1);
@@ -42,7 +45,7 @@
     font-size: 16px;
     line-height: 1.6;
     overflow-x: hidden;
-    cursor: none;
+    cursor: auto;
   }
 
   /* ─── CUSTOM CURSOR ─── */
@@ -68,8 +71,12 @@
     transition: transform 0.12s var(--ease), width 0.3s, height 0.3s, border-color 0.3s;
     opacity: 0.6;
   }
-  body:has(a:hover) #cursor { background: var(--cyan); width: 16px; height: 16px; }
-  body:has(a:hover) #cursor-ring { width: 56px; height: 56px; border-color: var(--cyan); }
+  @media (hover: hover) {
+    a:hover ~ #cursor,
+    button:hover ~ #cursor { background: var(--cyan); width: 16px; height: 16px; }
+    a:hover ~ #cursor-ring,
+    button:hover ~ #cursor-ring { width: 56px; height: 56px; border-color: var(--cyan); }
+  }
 
   /* ─── SCROLLBAR ─── */
   ::-webkit-scrollbar { width: 4px; }
@@ -86,10 +93,13 @@
     justify-content: space-between;
     padding: 20px 48px;
     background: linear-gradient(180deg, var(--bg) 0%, transparent 100%);
-    backdrop-filter: blur(0px);
+    /* backdrop-filter: none;- Cleaner */
+    -webkit-backdrop-filter: blur(10px); /* For Safari support */
+    backdrop-filter: blur(10px);
     transition: backdrop-filter 0.3s, background 0.3s;
   }
   nav.scrolled {
+    -webkit-backdrop-filter: blur(10px); /* For Safari support */
     backdrop-filter: blur(20px);
     background: #06060890;
     border-bottom: 1px solid var(--border);
@@ -145,6 +155,7 @@
   }
   .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
   .hamburger span { width: 26px; height: 2px; background: var(--text2); border-radius: 2px; transition: 0.3s; }
+  .hamburger:focus { outline: 2px solid var(--accent2); outline-offset: 2px; }
 
   /* ─── SECTION BASE ─── */
   section {
@@ -234,8 +245,12 @@
     background-clip: text;
     background-size: 200%;
     animation: gradShift 4s ease infinite;
+    will-change: auto;
   }
-  @keyframes gradShift { 0%,100%{background-position:0%} 50%{background-position:100%} }
+  @keyframes gradShift { 
+    0%, 100% { background-position: 0% }
+    50% { background-position: 100% }
+  }
   .home-sub {
     font-size: 18px;
     color: var(--text2);
@@ -278,6 +293,7 @@
     border-radius: 8px;
     text-decoration: none;
     transition: border-color 0.2s, background 0.2s, transform 0.2s;
+    -webkit-backdrop-filter: blur(10px); /* For Safari support */
     backdrop-filter: blur(8px);
   }
   .btn-outline:hover { border-color: var(--accent2); background: var(--surface2); transform: translateY(-2px); }
@@ -371,6 +387,7 @@
     border-radius: var(--radius);
     overflow: hidden;
     transition: border-color 0.3s;
+    -webkit-backdrop-filter: blur(10px); /* For Safari support */
     backdrop-filter: blur(12px);
   }
   .acc-item.open { border-color: var(--accent); }
@@ -380,6 +397,7 @@
     justify-content: space-between;
     padding: 20px 24px;
     cursor: pointer;
+    -webkit-user-select: none; /* For Safari support */
     user-select: none;
   }
   .acc-header-left {
@@ -562,6 +580,7 @@
     border: 1px solid var(--border);
     border-radius: var(--radius2);
     padding: 32px;
+    -webkit-backdrop-filter: blur(10px); /* For Safari support */
     backdrop-filter: blur(20px);
     transition: all 0.6s var(--ease);
     cursor: pointer;
@@ -623,6 +642,7 @@
     justify-content: center;
     cursor: pointer;
     transition: border-color 0.2s, background 0.2s, transform 0.2s;
+    -webkit-backdrop-filter: blur(8px); /* For Safari support */
     backdrop-filter: blur(8px);
   }
   .carousel-btn:hover { border-color: var(--accent2); background: var(--accent); transform: scale(1.1); }
@@ -644,6 +664,7 @@
     border: 1px solid var(--border);
     border-radius: var(--radius2);
     padding: 40px;
+    -webkit-backdrop-filter: blur(16px); /* For Safari support */
     backdrop-filter: blur(16px);
     text-align: center;
     display: flex;
@@ -750,6 +771,7 @@
     background: var(--surface2);
     border: 1px solid var(--border);
     border-radius: 100px;
+    -webkit-backdrop-filter: blur(10px); /* For Safari support */
     backdrop-filter: blur(16px);
     cursor: pointer;
     overflow: hidden;
@@ -808,6 +830,49 @@
   }
   .contact-footer a { color: var(--text2); text-decoration: none; }
   .contact-footer a:hover { color: var(--accent2); }
+
+  /* ─── CONTACT TITLE EMPHASIS ─── */
+  .contact-title-highlight {
+    font-style: normal;
+    color: var(--accent2);
+  }
+
+  /* ─── PLATFORM LOGO BACKGROUNDS ─── */
+  .platform-logo {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 26px;
+    transition: transform 0.3s;
+    border-radius: 100px;
+  }
+  .logo-gmail {
+    background: rgba(234, 67, 53, 0.125);
+  }
+  .logo-github {
+    background: rgba(255, 255, 255, 0.0625);
+  }
+  .logo-linkedin {
+    background: rgba(0, 119, 181, 0.125);
+  }
+
+  /* ─── PROJECT NAME WITH DYNAMIC COLOR ─── */
+  .proj-name {
+    color: var(--proj-color, var(--accent2));
+  }
+
+  /* ─── PLATFORM LABEL ─── */
+  .platform-label {
+    font-size: 13px;
+    padding: 8px 16px;
+    border-radius: 6px;
+  }
+  .platform-label-copied {
+    color: white;
+  }
 
   /* ─── NOISE OVERLAY ─── */
   .noise {
@@ -868,6 +933,7 @@
     position: fixed;
     inset: 0;
     background: #06060698;
+    -webkit-backdrop-filter: blur(10px); /* For Safari support */
     backdrop-filter: blur(24px);
     z-index: 999;
     display: none;
@@ -908,7 +974,7 @@
 
 <!-- MOBILE NAV -->
 <div class="mobile-nav" id="mobileNav">
-  <button class="mobile-nav-close" onclick="closeMobileNav()">✕</button>
+  <button type="button" class="mobile-nav-close" onclick="closeMobileNav()">✕</button>
   <a href="#home" onclick="closeMobileNav()">Home</a>
   <a href="#about" onclick="closeMobileNav()">About</a>
   <a href="#projects" onclick="closeMobileNav()">Projects</a>
@@ -918,7 +984,7 @@
 
 <!-- NAV -->
 <nav id="navbar">
-  <a href="#home" class="nav-logo">YN<span>.</span></a>
+  <a href="#home" class="nav-logo">DV<span>.</span></a>
   <ul class="nav-links">
     <li><a href="#home">Home</a></li>
     <li><a href="#about">About</a></li>
@@ -936,13 +1002,13 @@
 <section id="home">
   <canvas id="three-canvas"></canvas>
   <div class="home-content">
-    <p class="home-eyebrow">✦ Full Stack Developer & AI Engineer</p>
+    <p class="home-eyebrow">✦ Data Science & AI/ML Engineer</p>
     <h1 class="home-title">
-      Building<br><span class="gradient-text">Digital Futures</span>
+      Engineering<br><span class="gradient-text">Intelligent Systems</span>
     </h1>
-    <p class="home-sub">I craft immersive web experiences, intelligent systems, and products that sit at the intersection of art and engineering.</p>
+    <p class="home-sub">I design and deploy machine learning systems — from data pipelines and model training to REST APIs and interactive dashboards. My focus is on building things that work end-to-end, not just in a notebook.</p>
     <div class="home-ctas">
-      <a href="#projects" class="btn-primary">View Projects →</a>
+      <a href="#projects" class="btn-primary">Explore My Work →</a>
       <a href="#contact" class="btn-outline">Let's Connect</a>
     </div>
   </div>
@@ -959,12 +1025,12 @@
     <div class="about-left reveal">
       <div class="about-avatar-wrap">
         <div class="about-avatar-ring"></div>
-        <div class="about-avatar-inner">YN</div>
+        <div class="about-avatar-inner">DV</div>
       </div>
-      <div class="about-name">Your Name</div>
-      <div class="about-role">// Full Stack · AI/ML · Open Source</div>
+      <div class="about-name">Drushti Vagal</div>
+      <div class="about-role">// Data Science · AI/ML · Open Source</div>
       <p class="about-bio">
-        Passionate about building scalable, user-centric software. I blend engineering precision with creative vision to deliver experiences that make an impact. Currently exploring the frontiers of AI-powered applications and cloud-native architectures.
+        I'm a final-year Computer/IT Engineering student focused on applied machine learning and backend systems. Over the past year I've built and deployed production-style projects spanning NLP (fake news and phishing detection), time-series forecasting (LSTM-based stock prediction with uncertainty estimation), and computer vision (a workplace safety detection system). I'm currently exploring how to take these from working prototypes to fully production-grade, monitored services.
       </p>
     </div>
 
@@ -984,19 +1050,19 @@
           <div class="acc-body" id="acc-edu">
             <div class="acc-body-inner">
               <div class="edu-entry">
-                <div class="edu-degree">B.Tech in Computer Science & Engineering</div>
-                <div class="edu-school">XYZ University of Technology, City</div>
-                <div class="edu-year">2020 – 2024 · CGPA: 9.2 / 10</div>
+                <div class="edu-degree">Bachelor of Engineering in Computer Science</div>
+                <div class="edu-school">Terna Engineering College, Nerul</div>
+                <div class="edu-year">2022 – 2026 · CGPA: 8.5 / 10</div>
               </div>
               <div class="edu-entry">
                 <div class="edu-degree">Higher Secondary (XII) — Science</div>
-                <div class="edu-school">ABC Junior College, City</div>
-                <div class="edu-year">2018 – 2020 · Percentage: 91.4%</div>
+                <div class="edu-school">Naryana College, Kalyan</div>
+                <div class="edu-year">2020 – 2022 · Percentage: 84.1%</div>
               </div>
               <div class="edu-entry">
                 <div class="edu-degree">Secondary (X)</div>
-                <div class="edu-school">PQR School, City</div>
-                <div class="edu-year">2018 · Percentage: 95.2%</div>
+                <div class="edu-school">Omkar Cambridge International School, Dombivali</div>
+                <div class="edu-year"> Till 2020 · Percentage: 82%</div>
               </div>
             </div>
           </div>
@@ -1020,18 +1086,18 @@
                   <div class="cert-year">2024</div>
                 </div>
                 <div class="cert-card">
-                  <div class="cert-name">TensorFlow Developer</div>
-                  <div class="cert-issuer">DeepLearning.AI</div>
+                  <div class="cert-name">Deloitte | Forage</div>
+                  <div class="cert-issuer">Data Analyst Technology</div>
                   <div class="cert-year">2023</div>
                 </div>
                 <div class="cert-card">
-                  <div class="cert-name">AWS Cloud Practitioner</div>
-                  <div class="cert-issuer">Amazon Web Services</div>
+                  <div class="cert-name">AWS | Forage</div>
+                  <div class="cert-issuer">Solutions Architecture</div>
                   <div class="cert-year">2023</div>
                 </div>
                 <div class="cert-card">
-                  <div class="cert-name">Meta Front-End Developer</div>
-                  <div class="cert-issuer">Meta / Coursera</div>
+                  <div class="cert-name">Power BI for Business Professionals</div>
+                  <div class="cert-issuer">Infosys / Springboard</div>
                   <div class="cert-year">2022</div>
                 </div>
                 <div class="cert-card">
@@ -1061,15 +1127,15 @@
           <div class="acc-body" id="acc-research">
             <div class="acc-body-inner">
               <div class="paper-card">
-                <div class="paper-title">Deep Learning-Based Approach for Efficient Early Detection of Diabetic Retinopathy Using Retinal Fundus Images</div>
-                <div class="paper-journal">IEEE Access · Volume 11 · 2023</div>
-                <div class="paper-year">Published: October 2023 · DOI: 10.1109/XXXXXX</div>
-                <a href="#" class="paper-link">🔗 View Publication</a>
+                <div class="paper-title">THE RETURN OF ECONOMIC STATECRAFT – Sanctions, Supply Chains and the Restructuring of Global Dependence</div>
+                <div class="paper-journal">IISPPR · 2026</div>
+                <div class="paper-year">Published: January 2026 · DOI: 15/12/2025</div>
+                <a href="https://iisppr.org.in/the-return-of-economic-statecraft-sanctions-supply-chains-and-the-restructuring-of-global-dependence/" class="paper-link">🔗 View Publication</a>
               </div>
               <div class="paper-card">
-                <div class="paper-title">Scalable Microservice Orchestration with AI-Driven Auto-Scaling: A Cloud-Native Approach</div>
-                <div class="paper-journal">International Journal of Cloud Computing · 2024</div>
-                <div class="paper-year">Published: March 2024 · Under Review at IJCC</div>
+                <div class="paper-title">Detection of Sexual Harassment in Workplace </div>
+                <div class="paper-journal">Terna Engineering College · 2026</div>
+                <div class="paper-year">Published: May 2026 · Under Review at TEC</div>
                 <a href="#" class="paper-link">🔗 View Preprint</a>
               </div>
             </div>
@@ -1090,24 +1156,42 @@
               <div class="skill-category">
                 <div class="skill-category-title">Languages</div>
                 <div class="skill-item"><span class="skill-name">Python</span><div class="skill-bar"><div class="skill-fill" data-pct="92"></div></div><span class="skill-pct">92%</span></div>
-                <div class="skill-item"><span class="skill-name">JavaScript</span><div class="skill-bar"><div class="skill-fill" data-pct="88"></div></div><span class="skill-pct">88%</span></div>
-                <div class="skill-item"><span class="skill-name">TypeScript</span><div class="skill-bar"><div class="skill-fill" data-pct="80"></div></div><span class="skill-pct">80%</span></div>
-                <div class="skill-item"><span class="skill-name">Java</span><div class="skill-bar"><div class="skill-fill" data-pct="75"></div></div><span class="skill-pct">75%</span></div>
-                <div class="skill-item"><span class="skill-name">C/C++</span><div class="skill-bar"><div class="skill-fill" data-pct="70"></div></div><span class="skill-pct">70%</span></div>
-                <div class="skill-item"><span class="skill-name">SQL</span><div class="skill-bar"><div class="skill-fill" data-pct="85"></div></div><span class="skill-pct">85%</span></div>
+                <div class="skill-item"><span class="skill-name">SQL</span><div class="skill-bar"><div class="skill-fill" data-pct="88"></div></div><span class="skill-pct">88%</span></div>
+                <div class="skill-item"><span class="skill-name">JavaScript</span><div class="skill-bar"><div class="skill-fill" data-pct="80"></div></div><span class="skill-pct">80%</span></div>
+                <div class="skill-item"><span class="skill-name">R</span><div class="skill-bar"><div class="skill-fill" data-pct="75"></div></div><span class="skill-pct">75%</span></div>
+                <div class="skill-item"><span class="skill-name">Java</span><div class="skill-bar"><div class="skill-fill" data-pct="70"></div></div><span class="skill-pct">70%</span></div>
+                <div class="skill-item"><span class="skill-name">C/C++</span><div class="skill-bar"><div class="skill-fill" data-pct="75"></div></div><span class="skill-pct">75%</span></div>
               </div>
               <div class="skill-category">
                 <div class="skill-category-title">Frameworks & Libraries</div>
-                <div class="skill-item"><span class="skill-name">React.js</span><div class="skill-bar"><div class="skill-fill" data-pct="90"></div></div><span class="skill-pct">90%</span></div>
-                <div class="skill-item"><span class="skill-name">Node.js</span><div class="skill-bar"><div class="skill-fill" data-pct="85"></div></div><span class="skill-pct">85%</span></div>
-                <div class="skill-item"><span class="skill-name">TensorFlow</span><div class="skill-bar"><div class="skill-fill" data-pct="80"></div></div><span class="skill-pct">80%</span></div>
-                <div class="skill-item"><span class="skill-name">FastAPI</span><div class="skill-bar"><div class="skill-fill" data-pct="78"></div></div><span class="skill-pct">78%</span></div>
-                <div class="skill-item"><span class="skill-name">Three.js</span><div class="skill-bar"><div class="skill-fill" data-pct="72"></div></div><span class="skill-pct">72%</span></div>
+                <div class="skill-item"><span class="skill-name">TensorFlow / Keras </span><div class="skill-bar"><div class="skill-fill" data-pct="90"></div></div><span class="skill-pct">90%</span></div>
+                <div class="skill-item"><span class="skill-name">PyTorch </span><div class="skill-bar"><div class="skill-fill" data-pct="85"></div></div><span class="skill-pct">85%</span></div>
+                <div class="skill-item"><span class="skill-name">Scikit-learn</span><div class="skill-bar"><div class="skill-fill" data-pct="92"></div></div><span class="skill-pct">92%</span></div>
+                <div class="skill-item"><span class="skill-name">Pandas / NumPy</span><div class="skill-bar"><div class="skill-fill" data-pct="95"></div></div><span class="skill-pct">95%</span></div>
+                <div class="skill-item"><span class="skill-name">FastAPI / Flask </span><div class="skill-bar"><div class="skill-fill" data-pct="83"></div></div><span class="skill-pct">83%</span></div>
+                <div class="skill-item"><span class="skill-name">OpenCV </span><div class="skill-bar"><div class="skill-fill" data-pct="86"></div></div><span class="skill-pct">86%</span></div>
+                <div class="skill-item"><span class="skill-name">LangChain </span><div class="skill-bar"><div class="skill-fill" data-pct="84"></div></div><span class="skill-pct">84%</span></div>
+                <div class="skill-item"><span class="skill-name">React.js </span><div class="skill-bar"><div class="skill-fill" data-pct="82"></div></div><span class="skill-pct">82%</span></div>
               </div>
               <div class="skill-category">
                 <div class="skill-category-title">Software & Tools</div>
                 <div class="tools-grid" id="tools-grid">
-                  <span class="tool-pill">VS Code</span><span class="tool-pill">Git & GitHub</span><span class="tool-pill">Docker</span><span class="tool-pill">Kubernetes</span><span class="tool-pill">Figma</span><span class="tool-pill">Postman</span><span class="tool-pill">MongoDB</span><span class="tool-pill">PostgreSQL</span><span class="tool-pill">Firebase</span><span class="tool-pill">Linux</span><span class="tool-pill">Jupyter</span><span class="tool-pill">Blender</span><span class="tool-pill">Google Colab</span><span class="tool-pill">AWS</span><span class="tool-pill">GCP</span><span class="tool-pill">Vercel</span>
+                  <span class="tool-pill">VS Code</span>
+                  <span class="tool-pill">Git & GitHub</span>
+                  <span class="tool-pill">Docker</span>
+                  <span class="tool-pill">Jupyter Notebook</span>
+                  <span class="tool-pill">Figma</span>
+                  <span class="tool-pill">Postman</span>
+                  <span class="tool-pill">MySQL</span>
+                  <span class="tool-pill">PostgreSQL</span>
+                  <span class="tool-pill">Firebase</span>
+                  <span class="tool-pill">Jupyter</span>
+                  <span class="tool-pill">Power BI</span>
+                  <span class="tool-pill">Google Colab</span>
+                  <span class="tool-pill">Google Cloud AI</span>
+                  <span class="tool-pill">Tableau </span>
+                  <span class="tool-pill">Streamlit</span>
+                  <span class="tool-pill">Hugging Face</span>
                 </div>
               </div>
             </div>
@@ -1119,7 +1203,7 @@
   </div>
 </section>
 
-<!-- ═══════════════════════════════════ PROJECTS ═══════════════════════════════════ -->
+<!-- ══════════════════════════════ PROJECTS ════════════════════════════ -->
 <section id="projects">
   <div class="section-tag reveal">Projects</div>
   <h2 class="section-title reveal">Things I've <em>Built</em></h2>
@@ -1130,60 +1214,44 @@
       <!-- Cards injected by JS -->
     </div>
     <div class="carousel-nav">
-      <button class="carousel-btn" onclick="carouselPrev()">←</button>
+      <button type="button" class="carousel-btn" onclick="carouselPrev()">←</button>
       <div class="carousel-dots" id="carouselDots"></div>
-      <button class="carousel-btn" onclick="carouselNext()">→</button>
+      <button type="button" class="carousel-btn" onclick="carouselNext()">→</button>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════ EXPERIENCE ═══════════════════════════════════ -->
+<!-- ══════════════════════════════ EXPERIENCE ═════════════════════════════ -->
 <section id="experience">
   <div class="section-tag reveal">Experience</div>
   <h2 class="section-title reveal">Where I've <em>Worked</em></h2>
 
   <div class="exp-grid">
     <div class="reveal">
-      <a href="#" class="exp-resume-box" style="text-decoration:none">
+      <div class="exp-resume-box">
         <div class="resume-icon">📋</div>
         <div class="resume-title">My Resume</div>
         <div class="resume-desc">Download my full CV including all projects, publications, and work experience.</div>
-        <a href="#" class="btn-primary" style="display:inline-block">⬇ Download PDF</a>
-      </a>
+        <a href="https://drive.google.com/file/d/174Fa2Iij4J0hHe4YBYZ5zKmVgOgjEvIk/view?usp=sharing" class="btn-primary" target="_blank" rel="noopener noreferrer">⬇ Download PDF</a>
+      </div>
     </div>
 
     <div class="reveal">
       <div class="timeline">
 
         <div class="timeline-item">
-          <div class="tl-company">Infosys Ltd.</div>
-          <div class="tl-role">Software Engineering Intern</div>
-          <div class="tl-period">June 2023 – August 2023 · Pune, India</div>
-          <div class="tl-desc">Built RESTful microservices using Spring Boot and deployed containerized applications on AWS ECS. Reduced API response time by 34% through query optimization and caching strategies.</div>
-          <a href="#" class="tl-cert-link">🏆 View Certificate</a>
+          <div class="tl-company">International Institute of SDGs and Public Policy Research (IISPPR)</div>
+          <div class="tl-role">Research & Data Analytics Intern </div>
+          <div class="tl-period">Dec 2025 – Jan 2026 · Remote</div>
+          <div class="tl-desc">Collected and analyzed market and technology datasets to identify business trends.Conducted ad-hoc data analysis and delivered insights through structured analyticalreports.</div>
+          <a href="https://drive.google.com/file/d/1qqURaeWhbzrpxC6uv-Blu7eV11T9qy65/view?usp=sharing" class="tl-cert-link">🏆 View Certificate</a>
         </div>
 
         <div class="timeline-item">
-          <div class="tl-company">Google DSC – Lead</div>
-          <div class="tl-role">Developer Student Clubs Lead</div>
-          <div class="tl-period">August 2022 – July 2023 · University Chapter</div>
-          <div class="tl-desc">Led a community of 400+ students, organized 20+ workshops on GCP, Flutter, and AI/ML. Managed Google-sponsored events and hackathons with industry mentors.</div>
-          <a href="#" class="tl-cert-link">🏆 View Certificate</a>
-        </div>
-
-        <div class="timeline-item">
-          <div class="tl-company">Tata Consultancy Services</div>
-          <div class="tl-role">AI/ML Research Intern</div>
-          <div class="tl-period">November 2022 – January 2023 · Remote</div>
-          <div class="tl-desc">Developed and benchmarked NLP models for document classification. Achieved 91% accuracy on proprietary dataset using fine-tuned BERT with HuggingFace Transformers.</div>
-          <a href="#" class="tl-cert-link">🏆 View Certificate</a>
-        </div>
-
-        <div class="timeline-item">
-          <div class="tl-company">IEEE Student Branch</div>
-          <div class="tl-role">Technical Secretary</div>
-          <div class="tl-period">2021 – 2022 · University Chapter</div>
-          <div class="tl-desc">Coordinated technical events, paper presentations, and workshops. Collaborated with faculty on research initiatives and industry speaker sessions.</div>
+          <div class="tl-company">Small Planet Solutions Pvt. Ltd. </div>
+          <div class="tl-role">Data Science Intern</div>
+          <div class="tl-period"> Aug 2025 – Jan 2026 · Remote</div>
+          <div class="tl-desc">Analyzed market and technology datasets to identify trends, and delivered findings as structured reports used by the research team.</div>
           <a href="#" class="tl-cert-link">🏆 View Certificate</a>
         </div>
 
@@ -1192,66 +1260,56 @@
   </div>
 </section>
 
-<!-- ═══════════════════════════════════ CONTACT ═══════════════════════════════════ -->
+<!-- ════════════════════════ CONTACT ══════════════════════ -->
 <section id="contact">
   <div class="section-tag">Contact</div>
-  <h2 class="contact-title reveal">Let's <em style="font-style:normal;color:var(--accent2)">Work</em><br>Together</h2>
+  <h2 class="contact-title reveal">Let's <em class="contact-title-highlight">Work</em><br>Together</h2>
   <p class="contact-sub reveal">Open for freelance projects, full-time opportunities, research collaborations, or just a good conversation about tech.</p>
 
   <div class="contact-platforms reveal" id="platformsWrap">
 
     <div class="platform-btn platform-transition" id="plat-gmail"
-      data-name="your.email@gmail.com" data-value="your.email@gmail.com">
-      <div class="platform-logo" style="background:#ea433520;">📧</div>
+      data-name="drushtivagal22@gmail.com" data-value="drushtivagal22@gmail.com">
+      <div class="platform-logo logo-gmail">📧</div>
       <div class="platform-expand">
         <span class="platform-name">Gmail</span>
-        <button class="platform-copy" onclick="copyVal('your.email@gmail.com',event)">Copy</button>
+        <button type="button" class="platform-copy" onclick="copyVal('drushtivagal22@gmail.com',event)">Copy</button>
       </div>
     </div>
 
     <div class="platform-btn platform-transition" id="plat-github"
-      data-name="github.com/yourusername" data-value="https://github.com/yourusername">
-      <div class="platform-logo" style="background:#ffffff10;">
+      data-name="https://github.com/DrushtiV" data-value="https://github.com/DrushtiV">
+      <div class="platform-logo logo-github">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="var(--text)"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
       </div>
       <div class="platform-expand">
-        <span class="platform-name">yourusername</span>
-        <button class="platform-copy" onclick="copyVal('https://github.com/yourusername',event)">Copy</button>
+        <span class="platform-name">DrushtiV</span>
+        <button type="button" class="platform-copy" onclick="copyVal('https://github.com/DrushtiV',event)">Copy</button>
       </div>
     </div>
 
     <div class="platform-btn platform-transition" id="plat-linkedin"
-      data-name="linkedin.com/in/yourname" data-value="https://linkedin.com/in/yourname">
-      <div class="platform-logo" style="background:#0077b520;">
+      data-name="www.linkedin.com/in/drushti-v" data-value="www.linkedin.com/in/drushti-v">
+      <div class="platform-logo logo-linkedin">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="#0077b5"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
       </div>
       <div class="platform-expand">
-        <span class="platform-name">yourname</span>
-        <button class="platform-copy" onclick="copyVal('https://linkedin.com/in/yourname',event)">Copy</button>
-      </div>
-    </div>
-
-    <div class="platform-btn platform-transition" id="plat-gdev"
-      data-name="g.dev/yourprofile" data-value="https://g.dev/yourprofile">
-      <div class="platform-logo" style="background:#4285f420;">
-        <svg width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3" fill="#4285f4"/><path d="M12 2a10 10 0 100 20A10 10 0 0012 2zm0 2a8 8 0 018 8h-5a3 3 0 00-3-3V4zm0 16a8 8 0 01-8-8h5a3 3 0 003 3v5z" fill="#4285f4" opacity="0.5"/></svg>
-      </div>
-      <div class="platform-expand">
-        <span class="platform-name">g.dev/yourprofile</span>
-        <button class="platform-copy" onclick="copyVal('https://g.dev/yourprofile',event)">Copy</button>
+        <span class="platform-name">drushti-v</span>
+        <button type="button" class="platform-copy" onclick="copyVal('www.linkedin.com/in/drushti-v',event)">Copy</button>
       </div>
     </div>
 
   </div>
 
   <div class="contact-footer reveal">
-    Designed & built by <a href="#">Your Name</a> · <a href="#">Source on GitHub</a>
+    Designed & built by <a href="#">Drushti Vagal</a> · <a href="https://github.com/DrushtiV/drushtivagal.github.io">Source on GitHub</a>
   </div>
 </section>
 
 <script>
-
+// ═══════════════════════════════════════════════════════════
 //  CUSTOM CURSOR
+// ═══════════════════════════════════════════════════════════
 const cursor = document.getElementById('cursor');
 const ring = document.getElementById('cursor-ring');
 let mx = 0, my = 0, rx = 0, ry = 0;
@@ -1264,7 +1322,9 @@ function animCursor() {
 }
 animCursor();
 
+// ═══════════════════════════════════════════════════════════
 //  THREE.JS — HOME HERO
+// ═══════════════════════════════════════════════════════════
 (function() {
   const canvas = document.getElementById('three-canvas');
   const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
@@ -1368,26 +1428,41 @@ animCursor();
   });
 })();
 
+// ═══════════════════════════════════════════════════════════
 //  GRADIENT ORBS FOLLOW MOUSE
+// ═══════════════════════════════════════════════════════════
 const orb1 = document.getElementById('orb1');
 const orb2 = document.getElementById('orb2');
-document.addEventListener('mousemove', e => {
-  orb1.style.left = (e.clientX - 250) + 'px';
-  orb1.style.top = (e.clientY - 250) + 'px';
-});
 
+if (orb1) {
+  document.addEventListener('mousemove', e => {
+    orb1.style.left = (e.clientX - 250) + 'px';
+    orb1.style.top = (e.clientY - 250) + 'px';
+  });
+}
+if (orb2) {
+  document.addEventListener('mousemove', e => {
+    orb2.style.left = (e.clientX - 250) + 'px';
+    orb2.style.top = (e.clientY - 250) + 'px';
+  });
+}
+// ═══════════════════════════════════════════════════════════
 //  NAV SCROLL EFFECT
-const navbar = document.getElementById('navbar');
+// ═══════════════════════════════════════════════════════════
 window.addEventListener('scroll', () => {
   if (window.scrollY > 60) navbar.classList.add('scrolled');
   else navbar.classList.remove('scrolled');
 });
 
+// ═══════════════════════════════════════════════════════════
 //  MOBILE NAV
+// ═══════════════════════════════════════════════════════════
 function openMobileNav() { document.getElementById('mobileNav').classList.add('open'); }
 function closeMobileNav() { document.getElementById('mobileNav').classList.remove('open'); }
 
+// ═══════════════════════════════════════════════════════════
 //  ACCORDION
+// ═══════════════════════════════════════════════════════════
 function toggleAcc(id) {
   const items = document.querySelectorAll('.acc-item');
   items.forEach(item => {
@@ -1420,36 +1495,38 @@ function animateSkills() {
   }, 100);
 }
 
+// ═══════════════════════════════════════════════════════════
 //  3D CAROUSEL
+// ═══════════════════════════════════════════════════════════
 const projects = [
   {
-    num: '01', name: 'AI Health Diagnostics', color: '#7b5ea7',
-    desc: 'Deep learning web app that detects diabetic retinopathy from retinal fundus images with 94% accuracy. Built with TensorFlow, FastAPI, and React.',
-    tags: ['Python', 'TensorFlow', 'React', 'FastAPI', 'Docker'],
+    num: '01', name: 'PULSE (Stock LSTM Dashboard)', color: '#7b5ea7',
+    desc: 'An interactive dashboard that forecasts stock prices using an LSTM network, with Monte Carlo Dropout to quantify prediction uncertainty rather than presenting a single point estimate.',
+    tags: ['Deep Learning', 'RNN', 'Time-Series Forecasting', 'Bayesian Inference (via MC Dropout)'],
     live: '#', code: '#'
   },
   {
-    num: '02', name: 'CloudSync Dashboard', color: '#4fc3f7',
-    desc: 'Real-time multi-cloud resource monitoring dashboard with anomaly detection and auto-scaling recommendations using ML models.',
-    tags: ['Node.js', 'React', 'MongoDB', 'AWS', 'D3.js'],
+    num: '02', name: 'VERITAS (Fake News Detector API)', color: '#4fc3f7',
+    desc: 'A REST API that classifies news articles as real or fake using TF-IDF and Logistic Regression, with per-prediction keyword explainability so users can see exactly which words drove the result.',
+    tags: ['Deep Learning', 'NLP', 'Machine Learning', 'API Development'],
     live: '#', code: '#'
   },
   {
-    num: '03', name: 'StudyBot AI Tutor', color: '#f06292',
-    desc: 'Conversational AI tutoring platform with RAG-powered document understanding. Students upload notes and get personalized Q&A sessions.',
-    tags: ['LangChain', 'Python', 'Next.js', 'Pinecone', 'OpenAI'],
+    num: '03', name: 'PHISHGUARD (Phishing URL Detector)', color: '#f06292',
+    desc: 'A FastAPI service that flags phishing URLs in real time using a Random Forest model trained on lexical and structural URL features.',
+    tags: ['Python', 'ML', 'Feature-Engineering', 'Docker'],
     live: '#', code: '#'
   },
   {
-    num: '04', name: 'DevCollab Platform', color: '#ffd54f',
-    desc: 'GitHub-integrated project collaboration tool with real-time code review, task management, and PR analytics for remote engineering teams.',
-    tags: ['TypeScript', 'WebSocket', 'PostgreSQL', 'React', 'GitHub API'],
+    num: '04', name: 'SENTINAL', color: '#ffd54f',
+    desc: 'A computer-vision system that analyzes workplace video feeds with deep learning to flag indicators of harassment, built as a final-year capstone project.',
+    tags: ['Computer Vision', 'Deep Learning', 'Video Analytics', 'Real-time Processing'],
     live: '#', code: '#'
   },
   {
-    num: '05', name: 'EcoTrack — Carbon Footprint', color: '#81c784',
-    desc: 'Mobile-first web app that gamifies carbon footprint tracking. Users log daily activities and earn badges for sustainable choices.',
-    tags: ['React Native', 'Firebase', 'Chart.js', 'PWA'],
+    num: '05', name: 'RESONATE (Resume ATS Scorer)', color: '#81c784',
+    desc: 'A lightweight NLP tool that scores how well a resume matches a job description, replicating the keyword-matching logic used by Applicant Tracking Systems.',
+    tags: ['NLP', 'Text Similarity', 'Information Retrieval', 'Keyword Extraction'],
     live: '#', code: '#'
   },
   {
@@ -1472,7 +1549,7 @@ function buildCarousel() {
     card.className = 'proj-card';
     card.innerHTML = `
       <div class="proj-num">${p.num} / 0${projects.length}</div>
-      <div class="proj-name" style="color:${p.color}">${p.name}</div>
+      <div class="proj-name" style="--proj-color:${p.color}">${p.name}</div>
       <div class="proj-desc">${p.desc}</div>
       <div class="proj-tags">${p.tags.map(t=>`<span class="proj-tag">${t}</span>`).join('')}</div>
       <div class="proj-links">
@@ -1539,7 +1616,9 @@ carousel.addEventListener('touchend', e => {
 
 buildCarousel();
 
+// ═══════════════════════════════════════════════════════════
 //  CONTACT PLATFORM EXPAND (2s hover)
+// ═══════════════════════════════════════════════════════════
 let platformTimers = {};
 document.querySelectorAll('.platform-btn').forEach(btn => {
   btn.addEventListener('mouseenter', () => {
@@ -1555,16 +1634,16 @@ document.querySelectorAll('.platform-btn').forEach(btn => {
 function copyVal(val, e) {
   e.stopPropagation();
   navigator.clipboard.writeText(val).then(() => {
-    const btn = e.target;
-    const orig = btn.textContent;
-    btn.textContent = 'Copied!';
-    btn.style.background = 'var(--accent)';
-    btn.style.color = '#fff';
-    setTimeout(() => { btn.textContent = orig; btn.style.background = ''; btn.style.color = ''; }, 1500);
-  });
+    const btn = e.target.closest('.platform-btn');  // Find parent button
+    if (!btn) return;
+    const orig = btn.innerHTML;
+    btn.innerHTML = '<div class="platform-label platform-label-copied">Copied!</div>';
+  }).catch(err => console.error('Copy failed:', err));
 }
 
+// ═══════════════════════════════════════════════════════════
 //  SCROLL REVEAL
+// ═══════════════════════════════════════════════════════════
 const reveals = document.querySelectorAll('.reveal');
 const io = new IntersectionObserver((entries) => {
   entries.forEach((entry, i) => {
@@ -1575,7 +1654,9 @@ const io = new IntersectionObserver((entries) => {
 }, { threshold: 0.12 });
 reveals.forEach(el => io.observe(el));
 
+// ═══════════════════════════════════════════════════════════
 //  KEYBOARD ARROW NAVIGATION FOR CAROUSEL
+// ═══════════════════════════════════════════════════════════
 document.addEventListener('keydown', e => {
   if (e.key === 'ArrowRight') carouselNext();
   if (e.key === 'ArrowLeft') carouselPrev();
